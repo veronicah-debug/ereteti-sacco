@@ -1,0 +1,216 @@
+<Section>
+<caption>Morning deliveries — Thursday 1 October 2026 </caption>
+<table>
+<thead>
+<tr>
+ <th>Member no.</th>
+<th> Farmer</th>
+<th>  Route  </th>
+<th>  Litres  </th>
+<th>  Accepted</th>
+</tr>
+</thead>
+<tbody>
+<tr><th scope="row">ER-0001</th><td> Peter Mwangi</td><td> Gatundu North </td><td> 12.5 </td><td> Yes </td></tr>
+<tr><th scope="row">ER-0004</th><td> Esther Njeri</td><td> Gatundu South</td><td> 14.0 </td><td> Yes </td></tr>
+<tr><th scope="row">ER-0005</th><td>Daniel Kariuki</td><td> Gatundu South</td><td> 6.5 </td><td> No </td></tr>
+<tr><th scope="row">ER-0007</th><td> Samuel Gitau </td><td>  Kamwangi</td><td> 18.0 </td><td> Yes </td></tr><tr><th scope="row">ER-0008</th><td> Lucy Wairimu </td><td>  Kamwangi</td><td> 7.5</td><td> Yes </td></tr>
+</tbody>
+</table>
+
+
+<table>
+    <caption>Gatundu North route — Thursday 1 October 2026</caption>
+    <thead>
+      <tr>
+        <th scope="col">Member no.</th>
+        <th scope="col">Farmer</th>
+        <th scope="col">Morning (L)</th>
+        <th scope="col">Evening (L)</th>
+        <th scope="col">Day total (L)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">ER-0001</th><td>Peter Mwangi</td><td>12.5</td><td>10.0</td><td>22.5</td></tr>
+      <tr>
+        <th scope="row">ER-0002</th>
+        <td>Grace Wanjiku</td>
+        <td colspan="3">No delivery — reported sick</td>
+      </tr>
+      <tr><th scope="row">ER-0003</th><td>Joseph Kamau</td><td>8.0</td><td>7.5</td><td>15.5</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th scope="row" colspan="2">Route total</th>
+        <td>20.5</td><td>17.5</td><td>38.0</td>
+      </tr>
+    </tfoot>
+
+<table> 
+  <caption>Deliveries by route — Friday 2 October 2026</caption>
+    <thead>
+      <tr>
+        <th scope="col" rowspan="2">Route</th>
+        <th scope="col" rowspan="2">Farmer</th>
+        <th scope="colgroup" colspan="2">Litres</th>
+        <th scope="col" rowspan="2">Total (L)</th>
+      </tr>
+      <tr>
+        <th scope="col">Morning</th>
+        <th scope="col">Evening</th>
+      </tr>
+    </thead>
+     <tbody>
+      <tr>
+        <th scope="rowgroup" rowspan="3">Gatundu North</th>
+        <th scope="row">Peter Mwangi</th><td>12.0</td><td>10.5</td><td>22.5</td>
+      </tr>
+      <tr><th scope="row">Grace Wanjiku</th><td>9.0</td><td>8.5</td><td>17.5</td></tr>
+      <tr><th scope="row">Joseph Kamau</th><td>8.5</td><td>7.0</td><td>15.5</td></tr>
+    </tbody>
+
+ <tbody>
+      <tr>
+        <th scope="rowgroup" rowspan="3">Gatundu South</th>
+        <th scope="row">Esther Njeri</th><td>14.0</td><td>12.5</td><td>26.5</td>
+      </tr>
+      <tr><th scope="row">Daniel Kariuki</th><td>6.5</td><td>6.0</td><td>12.5</td></tr>
+      <tr><th scope="row">Mercy Nyambura</th><td>10.0</td><td>9.5</td><td>19.5</td></tr>
+    </tbody>
+
+    <tbody>
+         <tr>
+        <th scope="rowgroup" rowspan="2">Kamwangi</th>
+        <th scope="row">Samuel Gitau</th><td>18.0</td><td>16.5</td><td>34.5</td>
+      </tr>
+      <tr><th scope="row">Lucy Wairimu</th><td>7.5</td><td>7.0</td><td>14.5</td></tr>
+    </tbody>
+>
+</table>
+</Section>
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a farm visit</title>
+</head>
+<body>
+  <h1>Book a farm visit</h1>
+  <p>Fields marked * are required.</p>
+
+  <form action="#" method="post" enctype="multipart/form-data">
+
+    <fieldset>
+      <legend>Who you are</legend>
+
+      <p>
+        <label for="member_no">Member number *</label>
+        <input type="text" id="member_no" name="member_no"
+               placeholder="ER-0000" pattern="ER-[0-9]{4}"
+               title="ER- followed by four digits, e.g. ER-0001" required>
+      </p>
+      <p>
+        <label for="full_name">Full name *</label>
+        <input type="text" id="full_name" name="full_name" maxlength="60" required>
+      </p>
+      <p>
+        <label for="phone">Phone number *</label>
+        <input type="tel" id="phone" name="phone" placeholder="07XXXXXXXX"
+               pattern="(07[0-9]{8}|\+2547[0-9]{8})"
+               title="07XXXXXXXX or +2547XXXXXXXX" required>
+      </p>
+      <p>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+      </p>
+      <p>
+        <label for="route">Route *</label>
+        <select id="route" name="route" required>
+          <option value="">— Choose your route —</option>
+          <option value="gatundu-north">Gatundu North</option>
+          <option value="gatundu-south">Gatundu South</option>
+          <option value="kamwangi">Kamwangi</option>
+        </select>
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>The visit</legend>
+
+      <p>
+        <label for="visit_date">Preferred date *</label>
+        <input type="date" id="visit_date" name="visit_date" min="2026-10-05" required>
+      </p>
+      <p>
+        <label for="visit_time">Preferred time</label>
+        <input type="time" id="visit_time" name="visit_time" min="07:00" max="17:00">
+      </p>
+      <p>
+        <label for="cows">Number of cows *</label>
+        <input type="number" id="cows" name="cows" min="1" max="50" value="1" required>
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Reason for the visit *</legend>
+      <p>
+        <input type="radio" id="reason_health" name="reason" value="animal-health" required>
+        <label for="reason_health">Animal health</label>
+      </p>
+      <p>
+        <input type="radio" id="reason_feeding" name="reason" value="feeding-advice">
+        <label for="reason_feeding">Feeding advice</label>
+      </p>
+      <p>
+        <input type="radio" id="reason_breeding" name="reason" value="breeding-ai">
+        <label for="reason_breeding">Breeding (AI)</label>
+      </p>
+      <p>
+        <input type="radio" id="reason_milk" name="reason" value="milk-quality">
+        <label for="reason_milk">Milk quality</label>
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Also bring</legend>
+      <p>
+        <input type="checkbox" id="bring_licks" name="bring[]" value="mineral-licks">
+        <label for="bring_licks">Mineral licks</label>
+      </p>
+      <p>
+        <input type="checkbox" id="bring_dewormer" name="bring[]" value="dewormer">
+        <label for="bring_dewormer">Dewormer</label>
+      </p>
+      <p>
+        <input type="checkbox" id="bring_kit" name="bring[]" value="feed-sample-kit">
+        <label for="bring_kit">Feed sample kit</label>
+      </p>
+    </fieldset>
+
+    <p>
+      <label for="urgency">How urgent?</label>
+      Not urgent
+      <input type="range" id="urgency" name="urgency" min="1" max="5" value="3">
+      Very urgent
+    </p>
+
+    <p>
+      <label for="details">Describe the problem</label><br>
+      <textarea id="details" name="details" rows="4" cols="50"></textarea>
+    </p>
+
+    <p>
+      <label for="photo">Photo of the animal</label>
+      <input type="file" id="photo" name="photo" accept="image/*">
+    </p>
+
+    <p>
+      <button type="submit">Book the visit</button>
+      <button type="reset">Clear the form</button>
+    </p>
+  </form>
+</body>
+</html>
+

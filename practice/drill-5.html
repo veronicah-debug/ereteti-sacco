@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drill 5</title>
+</head>
+<body>
+  <h1>Send a message to the sacco</h1>
+
+  <form action="#" method="post">
+    <p>
+      <label for="name">Your name</label><br>
+      <input type="text" id="name" name="name" required>
+    </p>
+
+    <p>
+      <label for="phone">Phone number</label><br>
+      <input type="tel" id="phone" name="phone" pattern="07[0-9]{8}" required>
+    </p>
+
+    <p>
+      <label for="message">Your message</label><br>
+      <textarea id="message" name="message" rows="5" required></textarea>
+    </p>
+
+    <button type="submit">Send</button>
+  </form>
+</body>
+</html>
