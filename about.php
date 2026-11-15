@@ -1,23 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>About us-Ereteti Dairy Sacco</title>
-<script src="js/main.js" defer></script>
-</head>
-<body>
-<header>
-<h1> About Ereteti </h1>
-<p>Milk collected twice a day, on three routes out of Ngong.</p>
-</header>
-<nav>
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="routes.html">Our routes</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
+<?php
+$page_title = 'About us';
+include 'includes/header.php';
+?>
+
 <main>
     <section>
     <h2>Nine farmers and one cooler</h2>
@@ -41,7 +26,8 @@ alt="Farmers Collecting milk from a lorry at the Kiserian center">
     <h2>Founded with a passion for sustainable agriculture, our family-owned dairy farm is dedicated to producing the freshest, highest-quality milk while maintaining the utmost standards of animal welfare. Our mission is to nourish our community through honest farming practices, environmental stewardship, and transparent operations from pasture to bottle.</h2>
     <section>
 <p>Site built by Wanjiru Kamau, DBT Year 1, 2026.</p>
-</footer>
-</body>
-</html>
+</section>
+</main>
+
+<?php include 'includes/footer.php'; ?>
 
