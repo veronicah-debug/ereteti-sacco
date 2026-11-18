@@ -1,40 +1,23 @@
 <?php
+require_once 'includes/db.php';          // 1 · CONNECT — loads $conn
 $page_title = 'Our routes';
 include 'includes/header.php';
+// 2 · QUERY — ask the database for every route, in order
+$sql = "SELECT route_name, collection_centre FROM route ORDER BY route_id";
+$result = mysqli_query($conn, $sql);
 ?>
-
-<label for="route-search">Find a route or a centre</label>
-<input type="search" id="route-search" placeholder="e.g. Kibiko">
-<p id="route-count" aria-live="polite"></p>
-
-<main>
-    <section>
-  <h2>Kiserian route</h2>
-  <p>The Kiserian route operates from 6:00 AM to 12:00 PM and from 2:00 PM to 6:00 PM.</p>
-  <ul>
-    <li>Olepolos centre</li>
-    <li>Kandisi centre</li>
-  </ul>
-  <h3>Ngong route</h3>
-  <p>The lorry runs from 6.00am and again from 3.30pm.</p>
-  <ul>
-    <li>Ngong centre</li>
-    <li>Ngong Hills centre</li>
-  </ul>
-  <h3>Rongai route</h3>
-  <p>The lorry runs from 6.00am and again from 3.30pm.</p>
-  <ul>
-    <li>Rongai centre</li>
-    <li>Ongata Rongai centre</li>
-  </ul>
-</section>
-<h2>Where we collect</h2>
-<ul>
-<li><a href="routes.html">Kiserian route</a></li>
-<li><a href="routes.html">Ngong route</a></li>
-<li><a href="routes.html">Rongai route</a></li>
-</ul>
-</section>
-</main>
+  <main>
+    <label for="route-search">Find a route or a centre</label>
+    <input type="search" id="route-search" placeholder="e.g. Ngong">
+    <p id="route-count" aria-live="polite"></p>
+<?php
+// 3 · FETCH the next row, and 4 · SHOW it — once for every row
+while ($row = mysqli_fetch_assoc($result)) {
+    echo '<section>';
+    echo '<h2>' . $row['route_name'] . ' route</h2>';
+    echo '<p>Milk is cooled at ' . $row['collection_centre'] . '.</p>';
+    echo '</section>';
+}
+?>
+  </main>
 <?php include 'includes/footer.php'; ?>
-
