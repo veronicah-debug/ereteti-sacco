@@ -1,0 +1,19 @@
+ Lab 6 — my answers
+Name: Veronicah  Omanga   Admission number: 165806
+1. In process-delivery.php, the browser already checks the member number.
+   Why does PHP check it again? Name one way the browser's check can be skipped.
+The browser only helps the user interact with the system so it’s not secure, while PHP has better security it filters and makes sure bad data does not reach the database.
+Browser check can be skipped by deleting the required in the browser developer tools.
+
+2. In my INSERT, bind_param has the letters 'issd'. What does each letter
+   stand for, and which value does it go with?
+ Integer - Goes with the whole-number ID value such as member_id. 
+ String - Goes with the first text/date value such as delivery_date.
+ String - Goes with the second text value such as notes 
+ Decimal - Goes with the floating-point decimal number such as weight.
+3. Why is Delete a small form sent by post, while Edit is a link?
+Clicking Edit only allows you to read and display existing data so you can view it in a form, while Delete is a post form because deleting permanently changes or destroys database records.
+4. Someone opens deliveries.php?date=' OR '1'='1 on my site.
+Instead of returning all deliveries from the database, the query runs safely and simply returns no record, because there is no delivery whose actual date column literally equals the text string ' OR '1'='1.
+What happens, and why does my prepared statement not run it as SQL?
+A prepared statement compiles the SQL query structure first (SELECT ... WHERE date = ?) before inserting user input. When the parameter is bound later, MySQL treats the entire input strictly as a literal data value rather than executable SQL code.
