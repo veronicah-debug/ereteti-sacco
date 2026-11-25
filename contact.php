@@ -1,7 +1,7 @@
 <?php
   $page_title = "Contact us";
   include("includes/header.php");
-
+?>
   <main>
     <section>
       <h2>Contact us</h2>

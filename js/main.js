@@ -1,80 +1,86 @@
+// ---- litres check
 const litres = document.querySelector('#litres');
-const litresMessage =document.querySelector ('#litres-message');
-console.log(litres);
-console.log(litresMessage);
-console.log(document);
+const litresMessage = document.querySelector('#litres-message');
 
-function CheckLitres() {
-    let amount = Number(litres.value);
-    
-    if (litres.value === "") {
-        litresMessage.textContent = "";
+function checkLitres() {
+  let amount = Number(litres.value);
+
+  if (litres.value === "") {
+    litresMessage.textContent = "";
     litres.classList.remove("error");
-    }else if (amount < 1) {
-        litresMessage.textContent = "Amount must be more than 0";
-        litres.classList.add("error");
-    }else 
-        litresMessage.textContent = "";
-        litres.classList.remove("error");
-  } 
-}   
-litres.addEventListener('input', CheckLitres);
-
-const member = document.querySelector('#member');
-const memberMessage =document.querySelector ('#member-message');
-let memberRegex = /^ER-[0-9]{4}$/;
-function checkMember() {
-    let typed = member.value.trim().toUpperCase();
-    member.value = typed;
-    if(member.value === "") {
-        memberMessage.textContent = "";
-        member.classList.remove("error");
-    }else if (!memberRegex.test(member.value)) {
-        memberMessage.textContent = "Member ID must be in the format ER-XXXX";
-        member.classList.add("error");
-    }else {
-        memberMessage.textContent = "";
-        member.classList.remove("error");
-    }
+  } else if (amount < 1) {
+    litresMessage.textContent = "Amount must be more than 0";
+    litres.classList.add("error");
+  } else {
+    litresMessage.textContent = "";
+    litres.classList.remove("error");
+  }
 }
-member.addEventListener("blur", checkMember);
-// ---- 3. deliveries.html: the form, stopped before it is sent
+
+if (litres) {
+  litres.addEventListener('input', checkLitres);
+}
+
+// ---- member number check
+const member = document.querySelector('#member');
+const memberMessage = document.querySelector('#member-message');
+let memberRegex = /^ER-[0-9]{4}$/;
+
+function checkMember() {
+  let typed = member.value.trim().toUpperCase();
+  member.value = typed;
+  if (member.value === "") {
+    memberMessage.textContent = "";
+    member.classList.remove("error");
+  } else if (!memberRegex.test(member.value)) {
+    memberMessage.textContent = "Member ID must be in the format ER-XXXX";
+    member.classList.add("error");
+  } else {
+    memberMessage.textContent = "";
+    member.classList.remove("error");
+  }
+}
+
+if (member) {
+  member.addEventListener("blur", checkMember);
+}
+
+// ---- 3. deliveries page: the form, stopped only when something is wrong
 const deliveryForm = document.querySelector('#delivery-form');
 const formMessage = document.querySelector('#form-message');
 
 function recordDelivery(event) {
-  event.preventDefault();          // (a)
-  checkMember();                   // (b)
+  checkMember();
   checkLitres();
-  if (member.classList.contains('invalid')) {   // (c)
-    member.focus();                // (d)
-  } else if (litres.classList.contains('invalid')) {
+  if (member.classList.contains('error')) {
+    event.preventDefault();          // stop: the member number is wrong
+    member.focus();
+  } else if (litres.classList.contains('error')) {
+    event.preventDefault();          // stop: the litres are wrong
     litres.focus();
-  } else {
-    formMessage.textContent = 'Checked: ' + member.value + ', ' +   // (e)
-      litres.value + ' litres. Nothing is sent yet: ' +
-      'that needs a server.';
   }
+  // nothing wrong: the form goes on to process-delivery.php
 }
 
 if (deliveryForm) {
-  deliveryForm.addEventListener('submit', recordDelivery);   // (f)
+  deliveryForm.addEventListener('submit', recordDelivery);
 }
-// ---- 4. routes.html: the routes, filtered as you type
+
+// ---- 4. routes page: the routes, filtered as you type
 const search = document.querySelector('#route-search');
 const routeCount = document.querySelector('#route-count');
-const routeSections = document.querySelectorAll('main section');   // (a)
+const routeSections = document.querySelectorAll('main section');
 
 function filterRoutes() {
-  const wanted = search.value.trim().toLowerCase();   // (b)
+  const wanted = search.value.trim().toLowerCase();
   let shown = 0;
-  for (const section of routeSections) {              // (c)
+  for (const section of routeSections) {
     const words = section.textContent.toLowerCase();
-    if (words.includes(wanted)) {                     // (d)
+    if (words.includes(wanted)) {
       section.hidden = false;
       shown = shown + 1;
     } else {
-      section.hidden = true;                          // (e)
+      section.hidden = true;
     }
   }
   routeCount.textContent =
@@ -82,19 +88,20 @@ function filterRoutes() {
 }
 
 if (search) {
-  search.addEventListener('input', filterRoutes);      // (f)
+  search.addEventListener('input', filterRoutes);
 }
-// ---- 5. deliveries.html: the accepted total
+
+// ---- 5. deliveries page: the accepted total
 const totalCell = document.querySelector('#accepted-total');
 
 if (totalCell) {
-  const rows = document.querySelectorAll('tbody tr');       // (a)
+  const rows = document.querySelectorAll('tbody tr');
   let total = 0;
   for (const row of rows) {
-    const cells = row.querySelectorAll('td');               // (b)
-    if (cells[4].textContent === 'Yes') {                   // (c)
-      total = total + Number(cells[3].textContent);         // (d) Number, (e) 3
+    const cells = row.querySelectorAll('td');
+    if (cells.length > 4 && cells[4].textContent === 'Yes') {
+      total = total + Number(cells[3].textContent);
     }
   }
-  totalCell.textContent = total.toFixed(2);                 // (f)
+  totalCell.textContent = total.toFixed(2);
 }
